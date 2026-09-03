@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /pos_accounts/{docId} {
+      allow read, write: if true;
+    }
+    match /pos_sales/{docId} {
+      allow read, write: if true;
+    }
+    match /pos_tokens/{docId} {
+      allow read, write: if true;
+    }
+    match /pos_products/{docId} {
+      allow read, write: if true;
+    }
+    match /pos_registers/{docId} {
+      allow read, write: if true;
+    }
+    match /pos_closings/{docId} {
+      allow read, write: if true;
+    }
+    match /pos_cash_movements/{docId} {
+      allow read, write: if true;
+    }
+    match /pos_settings/{docId} {
+      allow read, write: if true;
+    }
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+

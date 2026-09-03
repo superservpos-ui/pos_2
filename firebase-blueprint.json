@@ -1,0 +1,155 @@
+{
+  "entities": {
+    "posAccount": {
+      "title": "POS Account",
+      "description": "Registered Cashier and Counter accounts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "unitCode": { "type": "string" },
+        "unitName": { "type": "string" },
+        "password": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["unitCode", "unitName"]
+    },
+    "posSale": {
+      "title": "POS Sale Transaction",
+      "description": "Completed invoice and sales data",
+      "type": "object",
+      "properties": {
+        "invoiceNumber": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "cashier": { "type": "string" },
+        "unitCode": { "type": "string" },
+        "grandTotal": { "type": "number" },
+        "paymentMethod": { "type": "string" }
+      },
+      "required": ["invoiceNumber", "date", "grandTotal", "paymentMethod"]
+    },
+    "posToken": {
+      "title": "POS Customer Order Token",
+      "description": "Queue token numbering and order status for food and counter pickup across all dates",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tokenNumber": { "type": "number" },
+        "tokenCode": { "type": "string" },
+        "businessDate": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "mealType": { "type": "string" },
+        "customerName": { "type": "string" },
+        "status": { "type": "string" },
+        "paymentStatus": { "type": "string" },
+        "grandTotal": { "type": "number" },
+        "completedAt": { "type": "string" }
+      },
+      "required": ["tokenNumber", "businessDate", "status"]
+    },
+    "posProduct": {
+      "title": "POS Product & Menu Item",
+      "description": "Menu food items, pricing, categories and custom dishes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "sellPrice": { "type": "number" },
+        "buyPrice": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "name", "category", "sellPrice"]
+    },
+    "posClosing": {
+      "title": "POS Daily Closing Report",
+      "description": "Shift and daily reconciliation closing report records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "registerId": { "type": "string" },
+        "businessDate": { "type": "string" },
+        "unitCode": { "type": "string" },
+        "totalSales": { "type": "number" },
+        "actualCash": { "type": "number" },
+        "difference": { "type": "number" }
+      },
+      "required": ["businessDate", "unitCode", "totalSales"]
+    },
+    "posRegister": {
+      "title": "POS Shift Register",
+      "description": "Counter shift register opening and closing status",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "unitCode": { "type": "string" },
+        "status": { "type": "string" },
+        "openingFloat": { "type": "number" },
+        "openedAt": { "type": "string" }
+      },
+      "required": ["unitCode", "status", "openingFloat"]
+    },
+    "posCashMovement": {
+      "title": "POS Cash Movement",
+      "description": "Cash In / Cash Out drawer movement entries",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "amount": { "type": "number" },
+        "reason": { "type": "string" },
+        "date": { "type": "string" },
+        "time": { "type": "string" },
+        "cashier": { "type": "string" }
+      },
+      "required": ["id", "type", "amount", "date"]
+    },
+    "posSetting": {
+      "title": "POS System Settings",
+      "description": "Company profile, currency, printer and hardware settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "currency": { "type": "string" },
+        "printerPaperSize": { "type": "string" }
+      },
+      "required": ["name", "currency"]
+    }
+  },
+  "firestore": {
+    "/pos_accounts/{accountId}": {
+      "schema": "posAccount",
+      "description": "Registered cashier accounts"
+    },
+    "/pos_sales/{invoiceNumber}": {
+      "schema": "posSale",
+      "description": "Completed invoices"
+    },
+    "/pos_tokens/{tokenId}": {
+      "schema": "posToken",
+      "description": "Customer order tokens across all dates"
+    },
+    "/pos_products/{productId}": {
+      "schema": "posProduct",
+      "description": "Food menu catalog items"
+    },
+    "/pos_closings/{closingId}": {
+      "schema": "posClosing",
+      "description": "Daily closing reports"
+    },
+    "/pos_registers/{registerId}": {
+      "schema": "posRegister",
+      "description": "Active and past shift registers"
+    },
+    "/pos_cash_movements/{movementId}": {
+      "schema": "posCashMovement",
+      "description": "Drawer cash in/out records"
+    },
+    "/pos_settings/{settingId}": {
+      "schema": "posSetting",
+      "description": "System settings and company profile"
+    }
+  }
+}
