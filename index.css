@@ -1,0 +1,260 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Font family setup for English, numbers, and full Sinhala Unicode characters */
+body, button, input, select, textarea {
+  font-family: 'Plus Jakarta Sans', 'Inter', 'Noto Sans Sinhala', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Theme Accent Color Variables */
+:root {
+  --theme-accent: #d97706;
+  --theme-accent-hover: #b45309;
+  --theme-accent-light: #fef3c7;
+  --theme-accent-subtle: #fffbeb;
+  --theme-accent-border: #f59e0b;
+  --theme-accent-text: #78350f;
+  --theme-accent-glow: rgba(217, 119, 6, 0.25);
+}
+
+[data-theme-color="emerald"] {
+  --theme-accent: #059669;
+  --theme-accent-hover: #047857;
+  --theme-accent-light: #d1fae5;
+  --theme-accent-subtle: #ecfdf5;
+  --theme-accent-border: #10b981;
+  --theme-accent-text: #064e3b;
+  --theme-accent-glow: rgba(5, 150, 105, 0.25);
+}
+
+[data-theme-color="blue"] {
+  --theme-accent: #2563eb;
+  --theme-accent-hover: #1d4ed8;
+  --theme-accent-light: #dbeafe;
+  --theme-accent-subtle: #eff6ff;
+  --theme-accent-border: #3b82f6;
+  --theme-accent-text: #1e3a8a;
+  --theme-accent-glow: rgba(37, 99, 235, 0.25);
+}
+
+[data-theme-color="rose"] {
+  --theme-accent: #e11d48;
+  --theme-accent-hover: #be123c;
+  --theme-accent-light: #ffe4e6;
+  --theme-accent-subtle: #fff1f2;
+  --theme-accent-border: #f43f5e;
+  --theme-accent-text: #881337;
+  --theme-accent-glow: rgba(225, 29, 72, 0.25);
+}
+
+[data-theme-color="indigo"] {
+  --theme-accent: #4f46e5;
+  --theme-accent-hover: #4338ca;
+  --theme-accent-light: #e0e7ff;
+  --theme-accent-subtle: #eef2ff;
+  --theme-accent-border: #6366f1;
+  --theme-accent-text: #312e81;
+  --theme-accent-glow: rgba(79, 70, 229, 0.25);
+}
+
+[data-theme-color="amber"] {
+  --theme-accent: #d97706;
+  --theme-accent-hover: #b45309;
+  --theme-accent-light: #fef3c7;
+  --theme-accent-subtle: #fffbeb;
+  --theme-accent-border: #f59e0b;
+  --theme-accent-text: #78350f;
+  --theme-accent-glow: rgba(217, 119, 6, 0.25);
+}
+
+/* =========================================
+   Dynamic Theme Class Connectors
+   (Maps UI accent classes to dynamic variables)
+   ========================================= */
+
+.bg-amber-600,
+.bg-amber-500 {
+  background-color: var(--theme-accent) !important;
+}
+
+.hover\:bg-amber-700:hover,
+.hover\:bg-amber-600:hover,
+.hover\:bg-amber-500:hover {
+  background-color: var(--theme-accent-hover) !important;
+}
+
+.border-amber-500,
+.border-amber-600,
+.border-amber-400 {
+  border-color: var(--theme-accent-border) !important;
+}
+
+.hover\:border-amber-400:hover,
+.hover\:border-amber-500:hover {
+  border-color: var(--theme-accent-border) !important;
+}
+
+.text-amber-600,
+.text-amber-500,
+.text-amber-700,
+.text-amber-800 {
+  color: var(--theme-accent) !important;
+}
+
+.text-amber-950,
+.text-amber-900 {
+  color: var(--theme-accent-text) !important;
+}
+
+.bg-amber-50,
+.bg-amber-50\/50,
+.bg-amber-50\/40,
+.bg-amber-100 {
+  background-color: var(--theme-accent-subtle) !important;
+}
+
+.hover\:bg-amber-50:hover,
+.hover\:bg-amber-50\/50:hover,
+.hover\:bg-amber-100:hover {
+  background-color: var(--theme-accent-light) !important;
+}
+
+.focus\:outline-amber-500:focus,
+.focus\:outline-amber-600:focus {
+  outline-color: var(--theme-accent-border) !important;
+}
+
+.focus\:border-amber-500:focus,
+.focus\:border-amber-600:focus {
+  border-color: var(--theme-accent-border) !important;
+}
+
+.accent-amber-600 {
+  accent-color: var(--theme-accent) !important;
+}
+
+.ring-amber-500 {
+  --tw-ring-color: var(--theme-accent) !important;
+}
+
+/* =========================================
+   Global Dark Mode Overrides & Polish
+   ========================================= */
+html.dark {
+  color-scheme: dark;
+  background-color: #0b0f19;
+  color: #f8fafc;
+  --theme-accent-subtle: rgba(217, 119, 6, 0.15);
+  --theme-accent-light: rgba(217, 119, 6, 0.25);
+  --theme-accent-text: #fde68a;
+}
+
+html.dark[data-theme-color="emerald"] {
+  --theme-accent-subtle: rgba(5, 150, 105, 0.15);
+  --theme-accent-light: rgba(5, 150, 105, 0.25);
+  --theme-accent-text: #a7f3d0;
+}
+
+html.dark[data-theme-color="blue"] {
+  --theme-accent-subtle: rgba(37, 99, 235, 0.15);
+  --theme-accent-light: rgba(37, 99, 235, 0.25);
+  --theme-accent-text: #bfdbfe;
+}
+
+html.dark[data-theme-color="rose"] {
+  --theme-accent-subtle: rgba(225, 29, 72, 0.15);
+  --theme-accent-light: rgba(225, 29, 72, 0.25);
+  --theme-accent-text: #fecdd3;
+}
+
+html.dark[data-theme-color="indigo"] {
+  --theme-accent-subtle: rgba(79, 70, 229, 0.15);
+  --theme-accent-light: rgba(79, 70, 229, 0.25);
+  --theme-accent-text: #e0e7ff;
+}
+
+html.dark[data-theme-color="amber"] {
+  --theme-accent-subtle: rgba(217, 119, 6, 0.15);
+  --theme-accent-light: rgba(217, 119, 6, 0.25);
+  --theme-accent-text: #fde68a;
+}
+
+html.dark body {
+  background-color: #0b0f19;
+  color: #f8fafc;
+}
+
+/* Dark mode surface elevations */
+html.dark .bg-white {
+  background-color: #151d2e !important;
+  color: #f8fafc !important;
+}
+
+html.dark .bg-slate-50 {
+  background-color: #0b0f19 !important;
+  color: #f8fafc !important;
+}
+
+html.dark .bg-slate-100 {
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+html.dark .bg-slate-200 {
+  background-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+/* Dark mode typography colors */
+html.dark .text-black,
+html.dark .text-slate-900 {
+  color: #f8fafc !important;
+}
+
+html.dark .text-slate-800,
+html.dark .text-slate-700 {
+  color: #e2e8f0 !important;
+}
+
+html.dark .text-slate-600,
+html.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark .text-slate-400 {
+  color: #64748b !important;
+}
+
+/* Dark mode borders & dividers */
+html.dark .border-slate-200,
+html.dark .border-slate-300 {
+  border-color: #243048 !important;
+}
+
+html.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+html.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #243048 !important;
+}
+
+/* Dark mode inputs, dropdowns, textareas */
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark select,
+html.dark textarea {
+  background-color: #0b0f19 !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  border-color: var(--theme-accent, #f59e0b) !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748b !important;
+}
